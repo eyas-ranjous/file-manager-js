@@ -13,14 +13,14 @@ npm install file-manager-js
 ## Usage 
 
 **construction**
-```
+```javascript
 const fileManager = require('file-manager-js').create();
 ```
 
 **.stat(path)**
 
 retrieves the stats of a file or directory, a delegate to fs.stat
-```
+```javascript
 fileManager.stat('./test.txt')
 .then((stats) => // https://nodejs.org/api/fs.html#fs_class_fs_stats)
 .catch((error) => // error);
@@ -29,7 +29,7 @@ fileManager.stat('./test.txt')
 **.info(path)**
 
 retrieves a simplified stats object with basic info
-```
+```javascript
 fileManager.info('./test.txt')
 .then((info) => {
     /*
@@ -47,14 +47,14 @@ fileManager.info('./test.txt')
 **.join(path1, path2)**
 
 join two paths. a delegate to require('path').join 
-```
+```javascript
 let p = fileManager.join('a/b/c', 'd/e/f'); // a/b/c/d/e/f
 ```
 
 **.list(path)**
 
 list first-level files and directories inside a directory 
-```
+```javascript
 fileManager.list('./project') // it can be an absolute path using __dirname
 .then((entries) => {
     /*
@@ -70,7 +70,7 @@ fileManager.list('./project') // it can be an absolute path using __dirname
 **.listDeep(path)**
 
 list all-levels (in-depth) files and directories inside a directory 
-```
+```javascript
 fileManager.listDeep('./content')
 .then((entries) => {
     /*
@@ -86,7 +86,7 @@ fileManager.listDeep('./content')
 **.size(path)**
 
 calculate files size in bytes recursively for all-levels inside a directory
-```
+```javascript
 fileManager.size('./content')
 .then((size) => // size = 19003648 bytes)
 .catch((error) => // error)
@@ -95,7 +95,7 @@ fileManager.size('./content')
 **.exists(path)**
 
 checks if a path (file or directory) exists and resolve with true or false
-```
+```javascript
 fileManager.exists('./content')
 .then((exists) => // true)
 .catch((error) => // error)
@@ -108,7 +108,7 @@ fileManager.exists('./newContent')
 **.createDir(path)**
 
 creates a single directory or a directory structure recursively
-```
+```javascript
 fileManager.createDir('./a/b/c/d')
 .then((path) => // path = ./a/b/c/d) // 4 nested directories created
 .catch((error) => // error)
@@ -117,7 +117,7 @@ fileManager.createDir('./a/b/c/d')
 **.createFile(path)**
 
 creates a file and creates the directory structure in the path if not exists
-```
+```javascript
 fileManager.createFile('./x/y/z/test.txt')
 .then((path) => // path = ./x/y/z/test.txt) // 3 nested directories created and 1 file
 .catch((error) => // error)
@@ -126,7 +126,7 @@ fileManager.createFile('./x/y/z/test.txt')
 **.removeDir(path)**
 
 removes a directory structure with all its content recursively
-```
+```javascript
 fileManager.removeDir('./a')
 .then((path) => // path = ./a) // removed a/b/c/d + a/b/c + a/b + a/b/test.txt + a
 .catch((error) => // error)
@@ -135,7 +135,7 @@ fileManager.removeDir('./a')
 **.removeFile(path)**
 
 removes a file
-```
+```javascript
 fileManager.removeFile('./test.txt')
 .then((path) => // path = ./test.txt) // removed ./test.txt
 .catch((error) => // error)
@@ -144,7 +144,7 @@ fileManager.removeFile('./test.txt')
 **.rename(oldPathName, newPathName)**
 
 rename a file or directory
-```
+```javascript
 fileManager.rename('./test.txt', './ttt.txt')
 .then((path) => // path = ./test.txt) // renamed ./test.txt to ./ttt.txt
 .catch((error) => // error)
