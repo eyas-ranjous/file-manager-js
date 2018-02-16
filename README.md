@@ -53,7 +53,7 @@ let p = fileManager.join('a/b/c', 'd/e/f'); // a/b/c/d/e/f
 
 **.list(path)**
 
-list the first-level files and directories inside a directory 
+list first-level files and directories inside a directory 
 ```
 fileManager.list('./project') // it can be an absolute path using __dirname
 .then((entries) => {
@@ -69,7 +69,7 @@ fileManager.list('./project') // it can be an absolute path using __dirname
 
 **.listDeep(path)**
 
-list the all-levels (in-depth) files and directories inside a directory 
+list all-levels (in-depth) files and directories inside a directory 
 ```
 fileManager.listDeep('./content')
 .then((entries) => {
