@@ -24,7 +24,7 @@ describe('fileManager tests', () => {
             expect(fileManager.stat(STORAGE_ROOT)).to.eventually.be.fulfilled
             .then((stats) => {
                 expect(stats.isDirectory()).to.equal(true);
-                expect(stats.size).to.equal(170);
+                expect(stats.size).to.be.above(0);
             })
         );
 
