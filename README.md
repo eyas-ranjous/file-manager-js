@@ -85,7 +85,7 @@ fileManager.listDeep('./content')
 
 **.size(path)**
 
-calculate the size in bytes recursively for all-levels files inside a directory
+calculate files size in bytes recursively for all-levels inside a directory
 ```
 fileManager.size('./content')
 .then((size) => // size = 19003648 bytes)
