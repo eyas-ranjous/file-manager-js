@@ -3,7 +3,7 @@
 [![build:?](https://travis-ci.org/eyas-ranjous/file-manager-js.svg?branch=master)](https://travis-ci.org/eyas-ranjous/file-manager-js) [![npm](https://img.shields.io/npm/dm/file-manager-js.svg)](https://www.npmjs.com/packages/file-manager-js) [![npm](https://img.shields.io/npm/v/file-manager-js.svg)](https://www.npmjs.com/package/file-manager-js) [![npm](https://img.shields.io/badge/node-%3E=%206.0-blue.svg)](https://www.npmjs.com/package/file-manager-js)
 
 ## Description 
-manages files and directories on the local storage through promisified interface using node filesystem. It can list/create/remove files and directory structures recursively.
+manages files and directories on the local storage through promisified interface using node filesystem. It can list/create/remove files and directories recursively with promises.
 
 ## Install
 ```
