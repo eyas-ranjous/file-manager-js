@@ -17,7 +17,7 @@ npm install file-manager-js
 const fileManager = require('file-manager-js').create();
 ```
 
-**.stat()**
+**.stat(path)**
 
 retrieves the stats of a file or directory, a delegate to fs.stat
 ```
@@ -26,7 +26,7 @@ fileManager.stat('./test.txt')
 .catch((error) => // error);
 ```
 
-**.info()**
+**.info(path)**
 
 retrieves a simplified stats object with basic info
 ```
