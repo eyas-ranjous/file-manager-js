@@ -1,15 +1,29 @@
 {
   "name": "file-manager-js",
-  "version": "1.0.1",
-  "description": "node file manager",
+  "version": "1.0.2",
+  "description": "manage files and directories on the local storage through an enhanced promise interface",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/eyas-ranjous/file-manager-js.git"
   },
+  "keywords": [
+    "promise fs",
+    "recursive fs",
+    "create diroctry",
+    "remove file",
+    "rename file",
+    "remove diroctry",
+    "create directory",
+    "rename directory",
+    "list directory",
+    "remove diroctry recursively",
+    "create directory recursively",
+    "list directory recursively"
+  ],
   "author": "Eyas Ranjous <eyas.ranjous@gmail.com>",
   "license": "MIT",
   "bugs": {
