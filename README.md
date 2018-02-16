@@ -37,7 +37,7 @@ fileManager.info('./test.txt')
          size: 19,
          lastAccess: 2018-02-16T06:22:25.000Z,
          lastModified: 2018-02-11T08:26:00.000Z,
-         createTime: 2018-02-11T08:26:00.000Z }
+         createTime: 2018-02-11T08:26:00.000Z
      }
     */
 })
