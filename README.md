@@ -172,4 +172,4 @@ grunt build
 ```
 
 ## License
-The MIT License. Full License is [here](https://github.com/eyas-ranjous/express-routes-registrar/blob/master/LICENSE)
+The MIT License. Full License is [here](https://github.com/eyas-ranjous/file-manager-js/blob/master/LICENSE)
