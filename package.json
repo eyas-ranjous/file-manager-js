@@ -1,6 +1,6 @@
 {
   "name": "file-manager-js",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "node file manager",
   "main": "index.js",
   "scripts": {
