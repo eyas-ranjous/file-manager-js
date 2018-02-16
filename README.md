@@ -99,6 +99,10 @@ checks if a path (file or directory) exists and resolve with true or false
 fileManager.exists('./content')
 .then((exists) => // true)
 .catch((error) => // error)
+
+fileManager.exists('./newContent')
+.then((exists) => // false)
+.catch((error) => // error)
 ```
 
 **.createDir(path)**
