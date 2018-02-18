@@ -20,9 +20,9 @@ const fileManager = require('file-manager-js').create();
 **.stat(path)**
 
 retrieves the stats of a file or directory, a delegate to fs.stat
+https://nodejs.org/api/fs.html#fs_class_fs_stats
 ```javascript
-fileManager.stat('./test.txt')
-.then((stats) => // https://nodejs.org/api/fs.html#fs_class_fs_stats)
+fileManager.stat('./test.txt').then((stats) => // stats)
 .catch((error) => // error);
 ```
 
@@ -30,8 +30,7 @@ fileManager.stat('./test.txt')
 
 retrieves a simplified stats object with basic info
 ```javascript
-fileManager.info('./test.txt')
-.then((info) => {
+fileManager.info('./test.txt').then((info) => {
     /*
      {
          size: 19,
@@ -55,8 +54,8 @@ let p = fileManager.join('a/b/c', 'd/e/f'); // a/b/c/d/e/f
 
 list first-level files and directories inside a directory 
 ```javascript
-fileManager.list('./project') // it can be an absolute path using __dirname
-.then((entries) => {
+// path can be an absolute path using __dirname
+fileManager.list('./project').then((entries) => {
     /*
      {
          files: ['index.js', 'README.md'],
@@ -71,8 +70,7 @@ fileManager.list('./project') // it can be an absolute path using __dirname
 
 list all-levels (in-depth) files and directories inside a directory 
 ```javascript
-fileManager.listDeep('./content')
-.then((entries) => {
+fileManager.listDeep('./content').then((entries) => {
     /*
      {
          files: ['test.txt', 'abc/test.csv', 'new/content/test/a.txt'],
@@ -87,8 +85,7 @@ fileManager.listDeep('./content')
 
 calculate files size in bytes recursively for all-levels inside a directory
 ```javascript
-fileManager.size('./content')
-.then((size) => // size = 19003648 bytes)
+fileManager.size('./content').then((size) => // size = 19003648 bytes)
 .catch((error) => // error)
 ```
 
@@ -96,12 +93,10 @@ fileManager.size('./content')
 
 checks if a path (file or directory) exists and resolve with true or false
 ```javascript
-fileManager.exists('./content')
-.then((exists) => // true)
+fileManager.exists('./content').then((exists) => // true)
 .catch((error) => // error)
 
-fileManager.exists('./newContent')
-.then((exists) => // false)
+fileManager.exists('./newContent').then((exists) => // false)
 .catch((error) => // error)
 ```
 
@@ -109,8 +104,8 @@ fileManager.exists('./newContent')
 
 creates a single directory or a directory structure recursively
 ```javascript
-fileManager.createDir('./a/b/c/d')
-.then((path) => // path = ./a/b/c/d) // 4 nested directories created
+// create a directory tree
+fileManager.createDir('./a/b/c/d').then((path) => // path = ./a/b/c/d)
 .catch((error) => // error)
 ```
 
@@ -118,8 +113,8 @@ fileManager.createDir('./a/b/c/d')
 
 creates a file and creates the directory structure in the path if not exists
 ```javascript
-fileManager.createFile('./x/y/z/test.txt')
-.then((path) => // path = ./x/y/z/test.txt) // 3 nested directories created and 1 file
+// creates a directory structure then the file
+fileManager.createFile('./x/y/z/test.txt').then((path) => // path = ./x/y/z/test.txt)
 .catch((error) => // error)
 ```
 
@@ -127,8 +122,8 @@ fileManager.createFile('./x/y/z/test.txt')
 
 removes a directory structure with all its content recursively
 ```javascript
-fileManager.removeDir('./a')
-.then((path) => // path = ./a) // removed a/b/c/d + a/b/c + a/b + a/b/test.txt + a
+// remvove a/b/c/d + a/b/c +  a/b/test.txt + a/b + a
+fileManager.removeDir('./a').then((path) => // path = ./a)
 .catch((error) => // error)
 ```
 
@@ -136,8 +131,8 @@ fileManager.removeDir('./a')
 
 removes a file
 ```javascript
-fileManager.removeFile('./test.txt')
-.then((path) => // path = ./test.txt) // removed ./test.txt
+// removed ./test.txt
+fileManager.removeFile('./test.txt').then((path) => // path = ./test.txt)
 .catch((error) => // error)
 ```
 
@@ -145,8 +140,8 @@ fileManager.removeFile('./test.txt')
 
 rename a file or directory
 ```javascript
-fileManager.rename('./test.txt', './ttt.txt')
-.then((path) => // path = ./test.txt) // renamed ./test.txt to ./ttt.txt
+// renamed ./test.txt to ./ttt.txt
+fileManager.rename('./test.txt', './ttt.txt').then((path) => // path = ./test.txt)
 .catch((error) => // error)
 ```
 
