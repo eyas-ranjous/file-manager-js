@@ -1,11 +1,11 @@
 'use strict';
 
-const chai       = require('chai'),
-  expect         = chai.expect,
-  chaiAsPromised = require('chai-as-promised'),
-  fs             = require('fs'),
-  pathUtil       = require('path'),
-  FileManager    = require('../lib/fileManager');
+const chai           = require('chai');
+const expect         = chai.expect;
+const chaiAsPromised = require('chai-as-promised');
+const fs             = require('fs');
+const pathUtil       = require('path');
+const FileManager    = require('../lib/fileManager');
 
 chai.use(chaiAsPromised);
 
