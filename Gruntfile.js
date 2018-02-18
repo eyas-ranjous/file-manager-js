@@ -1,6 +1,6 @@
 /*!
  * file-manager-js
- * Grunt
+ * Gruntfile
  * Copyright(c) 2018 Eyas Ranjous <eyas.ranjous@gmail.com>
  * MIT Licensed
  */
