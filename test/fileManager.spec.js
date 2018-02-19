@@ -78,7 +78,7 @@ describe('fileManager tests', () => {
           let files = entries.files.map((entry) => {
             return entry.replace(STORAGE_ROOT, '');
           });
-          expect(files).to.deep.equal([ 
+          expect(files).to.have.members([ 
             '/t.txt',
             '/a/x.txt',
             '/a/y.txt',
