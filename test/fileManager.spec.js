@@ -11,13 +11,13 @@ chai.use(chaiAsPromised);
 
 describe('fileManager tests', () => {
 
-  const STORAGE_ROOT  = __dirname + '/fixtures/storage',
-    NEW_DIR           = STORAGE_ROOT + '/new',
-    NEW_FILE          = NEW_DIR + '/new.txt',
-    NEW_DIR_TREE      = STORAGE_ROOT + '/xxx/yyy/zzz',
-    NEW_DIR_TREE_FILE = STORAGE_ROOT + '/fff/ccc/mmm/new.txt';
+  const STORAGE_ROOT = __dirname + '/fixtures/storage';
+  const NEW_DIR = STORAGE_ROOT + '/new';
+  const NEW_FILE = NEW_DIR + '/new.txt';
+  const NEW_DIR_TREE = STORAGE_ROOT + '/xxx/yyy/zzz';
+  const NEW_DIR_TREE_FILE = STORAGE_ROOT + '/fff/ccc/mmm/new.txt';
   
-  let fileManager     = new FileManager(fs, pathUtil);
+  let fileManager = new FileManager(fs, pathUtil);
 
   describe('.stat(path)', () => {
     it('should get a dir stats', () => {
@@ -91,20 +91,20 @@ describe('fileManager tests', () => {
 
   describe('.size(path)', () => {
     it('should calculate the size of files in a directory structure', () => {
-        return expect(fileManager.size(STORAGE_ROOT)).to
-          .be.eventually.fulfilled.and.to.equal(54);
+      return expect(fileManager.size(STORAGE_ROOT)).to
+        .be.eventually.fulfilled.and.to.equal(54);
     });
   });
 
   describe('.exists(path)', () => {
     it('should check that a path exists and resolve with true', () => {
-        return expect(fileManager.exists(STORAGE_ROOT)).to
-          .be.eventually.fulfilled.and.to.equal(true);
+      return expect(fileManager.exists(STORAGE_ROOT)).to
+        .be.eventually.fulfilled.and.to.equal(true);
     });
 
     it('should check that a path exists resolve with false', () => {
-        return expect(fileManager.exists(STORAGE_ROOT + '/not_found')).to
-          .be.eventually.fulfilled.and.to.equal(false);
+      return expect(fileManager.exists(STORAGE_ROOT + '/not_found')).to
+        .be.eventually.fulfilled.and.to.equal(false);
     });
   });
 
@@ -177,9 +177,9 @@ describe('fileManager tests', () => {
             .be.eventually.fulfilled;
         })
         .then((path) => {
-            expect(path).to.equal(STORAGE_ROOT + '/fff');
-            return expect(fileManager.exists(STORAGE_ROOT + '/xxx')).to
-              .be.eventually.fulfilled.and.to.equal(false);
+          expect(path).to.equal(STORAGE_ROOT + '/fff');
+          return expect(fileManager.exists(STORAGE_ROOT + '/xxx')).to
+            .be.eventually.fulfilled.and.to.equal(false);
         })
         .then(() => {
           expect(fileManager.exists(STORAGE_ROOT + '/fff')).to
