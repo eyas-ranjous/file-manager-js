@@ -1,6 +1,6 @@
 {
   "name": "file-manager-js",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "manage files and directories on the local storage through an enhanced promise interface",
   "main": "index.js",
   "scripts": {
@@ -13,14 +13,14 @@
   "keywords": [
     "promise fs",
     "recursive fs",
-    "create diroctry",
+    "create directory",
     "remove file",
     "rename file",
-    "remove diroctry",
+    "remove directory",
     "create directory",
     "rename directory",
     "list directory",
-    "remove diroctry recursively",
+    "remove directory recursively",
     "create directory recursively",
     "list directory recursively"
   ],
