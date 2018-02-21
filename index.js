@@ -1,11 +1,8 @@
-/*!
- * file-manager-js
- * Entry Point
- * Copyright(c) 2018 Eyas Ranjous <eyas.ranjous@gmail.com>
- * MIT Licensed
- */
-
 'use strict';
+
+/**
+ * file-manager-js entry point
+ */
 
 const fs          = require('fs');
 const path        = require('path'); 
