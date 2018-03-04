@@ -1,6 +1,6 @@
 {
   "name": "file-manager-js",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "manage files and directories on the local storage through an enhanced promise interface",
   "main": "index.js",
   "scripts": {
