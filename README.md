@@ -28,15 +28,15 @@ fileManager.stat('./test.txt').then((stats) => // stats)
 
 **.info(path)**
 
-retrieves a simplified stats object with basic info
+returns an extended stats object that includes size and type of the path
 ```javascript
 fileManager.info('./test.txt').then((info) => {
     /*
      {
+         // if path is a directory, size is the recursive sum of all files inside
          size: 19,
-         lastAccess: 2018-02-16T06:22:25.000Z,
-         lastModified: 2018-02-11T08:26:00.000Z,
-         createTime: 2018-02-11T08:26:00.000Z
+         type: 'file', // 'directory' for a dir path
+         ... node stats properties
      }
     */
 })
@@ -78,14 +78,6 @@ fileManager.listDeep('./content').then((entries) => {
      }
     */
 })
-.catch((error) => // error)
-```
-
-**.size(path)**
-
-calculate files size in bytes recursively for all-levels inside a directory
-```javascript
-fileManager.size('./content').then((size) => // size = 19003648 bytes)
 .catch((error) => // error)
 ```
 

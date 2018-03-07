@@ -44,13 +44,25 @@ describe('fileManager tests', () => {
   });
 
   describe('.info(path)', () => {
-    it('should get an stat info object', () => {
+    it('should get info object of a file', () => {
       return expect(fileManager.info(`${STORAGE_ROOT}/t.txt`)).to
         .be.eventually.fulfilled.then((stats) => {
           expect(stats.size).to.equal(19);
-          expect(stats.createTime).to.be.instanceof(Date);
-          expect(stats.lastAccess).to.be.instanceof(Date);
-          expect(stats.lastModified).to.be.instanceof(Date);
+          expect(stats.type).to.equal('file');
+          expect(stats.atime).to.be.instanceof(Date);
+          expect(stats.mtime).to.be.instanceof(Date);
+          expect(stats.ctime).to.be.instanceof(Date);
+        });
+    });
+
+    it('should get info object of a directory', () => {
+      return expect(fileManager.info(`${STORAGE_ROOT}`)).to
+        .be.eventually.fulfilled.then((stats) => {
+          expect(stats.size).to.equal(54);
+          expect(stats.type).to.equal('directory');
+          expect(stats.atime).to.be.instanceof(Date);
+          expect(stats.mtime).to.be.instanceof(Date);
+          expect(stats.ctime).to.be.instanceof(Date);
         });
     });
   });
@@ -86,13 +98,6 @@ describe('fileManager tests', () => {
             '/b/c/d/d.txt'
           ]);
       });
-    });
-  });
-
-  describe('.size(path)', () => {
-    it('should calculate the size of files in a directory structure', () => {
-      return expect(fileManager.size(STORAGE_ROOT)).to
-        .be.eventually.fulfilled.and.to.equal(54);
     });
   });
 
