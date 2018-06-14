@@ -12,7 +12,6 @@ npm install file-manager-js
 
 ## Usage 
 
-**construction**
 ```javascript
 const fileManager = require('file-manager-js');
 ```
@@ -39,7 +38,7 @@ fileManager.info('./test.txt').then((info) => {
      ...
    }
   */
-}).catch((error) => error);
+}).catch((error) => // error);
 
 // directory info
 fileManager.info('./test').then((info) => {
@@ -50,7 +49,7 @@ fileManager.info('./test').then((info) => {
      ...
    }
   */
-}).catch((error) => error);
+}).catch((error) => // error);
 ```
 
 **.join(path1, path2)**
