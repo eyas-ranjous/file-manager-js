@@ -14,33 +14,39 @@ npm install file-manager-js
 
 **construction**
 ```javascript
-const fileManager = require('file-manager-js').create();
+const fileManager = require('file-manager-js');
 ```
 
 **.stat(path)**
 
-retrieves the stats of a file or directory, a delegate to fs.stat
+promisified fs.stat. retrieves the stats of a file or directory.
 https://nodejs.org/api/fs.html#fs_class_fs_stats
 ```javascript
 fileManager.stat('./test.txt').then((stats) => // stats)
-.catch((error) => // error);
+  .catch((error) => // error);
 ```
 
 **.info(path)**
 
-returns an extended stats object that includes size and type of the path
+returns an extended stats object that includes size (**bytes**) and type of the path
 ```javascript
 fileManager.info('./test.txt').then((info) => {
-    /*
-     {
-         // if path is a directory, size is the recursive sum of all files inside
-         size: 19,
-         type: 'file', // 'directory' for a dir path
-         ... node stats properties
-     }
-    */
-})
-.catch((error) => error);
+  /*
+   {
+     size: 19,
+     type: 'file', // 'directory' for a dir path
+     ...
+   }
+
+   OR
+
+   {
+     size: 2145, // size of all files inside the dir and sub-dirs
+     type: 'directory',
+     ...
+   }
+  */
+}).catch((error) => error);
 ```
 
 **.join(path1, path2)**
@@ -62,13 +68,12 @@ fileManager.list('./project').then((entries) => {
          dirs : ['lib', 'node_modules', 'test']
      }
     */
-})
-.catch((error) => // error)
+}).catch((error) => // error)
 ```
 
 **.listDeep(path)**
 
-list all-levels (in-depth) files and directories inside a directory 
+list in-depth files and directories inside a directory
 ```javascript
 fileManager.listDeep('./content').then((entries) => {
     /*
@@ -77,8 +82,7 @@ fileManager.listDeep('./content').then((entries) => {
          dirs : ['abc', 'abc/test', 'new/content/test']
      }
     */
-})
-.catch((error) => // error)
+}).catch((error) => // error)
 ```
 
 **.exists(path)**
@@ -86,15 +90,15 @@ fileManager.listDeep('./content').then((entries) => {
 checks if a path (file or directory) exists and resolve with true or false
 ```javascript
 fileManager.exists('./content').then((exists) => // true)
-.catch((error) => // error)
+  .catch((error) => // error)
 
 fileManager.exists('./newContent').then((exists) => // false)
-.catch((error) => // error)
+  .catch((error) => // error)
 ```
 
 **.createDir(path)**
 
-creates a single directory or a directory structure recursively
+creates a single directory or a directory tree
 ```javascript
 // create a directory tree
 fileManager.createDir('./a/b/c/d').then((path) => // path = ./a/b/c/d)
@@ -103,16 +107,16 @@ fileManager.createDir('./a/b/c/d').then((path) => // path = ./a/b/c/d)
 
 **.createFile(path)**
 
-creates a file and creates the directory structure in the path if not exists
+creates a file and creates the directory tree in the path if not exists
 ```javascript
 // creates a directory structure then the file
 fileManager.createFile('./x/y/z/test.txt').then((path) => // path = ./x/y/z/test.txt)
-.catch((error) => // error)
+  .catch((error) => // error)
 ```
 
 **.removeDir(path)**
 
-removes a directory structure with all its content recursively
+removes a directory or directory tree with all its content
 ```javascript
 // remvove a/b/c/d + a/b/c +  a/b/test.txt + a/b + a
 fileManager.removeDir('./a').then((path) => // path = ./a)
@@ -125,7 +129,7 @@ removes a file
 ```javascript
 // removed ./test.txt
 fileManager.removeFile('./test.txt').then((path) => // path = ./test.txt)
-.catch((error) => // error)
+  .catch((error) => // error)
 ```
 
 **.rename(oldPathName, newPathName)**
@@ -134,7 +138,7 @@ rename a file or directory
 ```javascript
 // renamed ./test.txt to ./ttt.txt
 fileManager.rename('./test.txt', './ttt.txt').then((path) => // path = ./test.txt)
-.catch((error) => // error)
+  .catch((error) => // error)
 ```
 
 ## Lint
