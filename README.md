@@ -132,12 +132,12 @@ fileManager.removeFile('./test.txt').then((path) => // path = ./test.txt)
   .catch((error) => // error)
 ```
 
-**.rename(oldPathName, newPathName)**
+**.rename(oldPath, newPath)**
 
 rename a file or directory
 ```javascript
-// renamed ./test.txt to ./ttt.txt
-fileManager.rename('./test.txt', './ttt.txt').then((path) => // path = ./test.txt)
+// rename file ./test.txt to ./ttt.txt
+fileManager.rename('./test.txt', './ttt.txt').then((newPath) => // ./ttt.txt)
   .catch((error) => // error)
 ```
 
