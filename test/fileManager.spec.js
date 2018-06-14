@@ -175,14 +175,14 @@ describe('fileManager tests', () => {
       const newPath = `${STORAGE_ROOT}/r.txt`;
       const oldPath = `${STORAGE_ROOT}/t.txt`;
       return expect(fm.rename(oldPath, newPath)).to
-        .be.eventually.fulfilled.then(() =>
+        .be.eventually.fulfilled.and.to.equal(newPath).then(() =>
           expect(fm.exists(oldPath)).to
             .be.eventually.fulfilled.and.to.equal(false)).then(() =>
           expect(fm.exists(newPath)).to
             .be.eventually.fulfilled.and.to.equal(true))
         .then(() => {
           expect(fm.rename(newPath, oldPath)).to
-            .be.eventually.be.fulfilled.and.to.equal(true);
+            .be.eventually.be.fulfilled.and.to.equal(oldPath);
         });
     });
 
