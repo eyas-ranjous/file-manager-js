@@ -30,19 +30,23 @@ fileManager.stat('./test.txt').then((stats) => // stats)
 
 returns an extended stats object that includes size (**bytes**) and type of the path
 ```javascript
+// file info
 fileManager.info('./test.txt').then((info) => {
   /*
    {
      size: 19,
-     type: 'file', // 'directory' for a dir path
+     type: 'file',
      ...
    }
+  */
+}).catch((error) => error);
 
-   OR
-
+// directory info
+fileManager.info('./test').then((info) => {
+  /*
    {
-     size: 2145, // size of all files inside the dir and sub-dirs
-     type: 'directory',
+     size: 2146, // size of all files in dir tree
+     type: 'file',
      ...
    }
   */
