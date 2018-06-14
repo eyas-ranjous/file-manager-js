@@ -46,7 +46,7 @@ fileManager.info('./test').then((info) => {
   /*
    {
      size: 2146, // size of all files in dir tree
-     type: 'file',
+     type: 'directory',
      ...
    }
   */
@@ -123,7 +123,7 @@ fileManager.createFile('./x/y/z/test.txt').then((path) => // path = ./x/y/z/test
 removes a directory or directory tree with all its content
 ```javascript
 // remvove a/b/c/d + a/b/c +  a/b/test.txt + a/b + a
-fileManager.removeDir('./a').then((path) => // path = ./a)
+fileManager.removeDir('./a').then((path) => // ./a)
 .catch((error) => // error)
 ```
 
@@ -132,7 +132,7 @@ fileManager.removeDir('./a').then((path) => // path = ./a)
 removes a file
 ```javascript
 // removed ./test.txt
-fileManager.removeFile('./test.txt').then((path) => // path = ./test.txt)
+fileManager.removeFile('./test.txt').then((path) => // ./test.txt)
   .catch((error) => // error)
 ```
 
