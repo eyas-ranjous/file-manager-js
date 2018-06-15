@@ -18,16 +18,16 @@ describe('fileManager tests', () => {
 
   describe('.stat(path)', () => {
     it('should get a dir stats', () =>
-      expect(fm.stat(STORAGE_ROOT)).to
-        .be.eventually.fulfilled.then((stats) => {
+      expect(fm.stat(STORAGE_ROOT)).to.be.eventually.fulfilled
+        .then((stats) => {
           expect(stats.isDirectory()).to.equal(true);
           expect(stats.size).to.be.above(0);
         }));
 
 
     it('should get a file stats', () =>
-      expect(fm.stat(`${STORAGE_ROOT}/t.txt`)).to
-        .be.eventually.fulfilled.then((stats) => {
+      expect(fm.stat(`${STORAGE_ROOT}/t.txt`)).to.be.eventually.fulfilled
+        .then((stats) => {
           expect(stats.isFile()).to.equal(true);
           expect(stats.size).to.equal(19);
         }));
@@ -40,8 +40,8 @@ describe('fileManager tests', () => {
 
   describe('.list(path)', () => {
     it('should list files and dirs inside a path', () =>
-      expect(fm.list(STORAGE_ROOT)).to
-        .be.eventually.fulfilled.then((entries) => {
+      expect(fm.list(STORAGE_ROOT)).to.be.eventually.fulfilled
+        .then((entries) => {
           expect(entries.dirs.map(entry => entry.replace(STORAGE_ROOT, '')))
             .to.deep.equal(['/a', '/b']);
           expect(entries.files.map(entry => entry.replace(STORAGE_ROOT, '')))
@@ -51,8 +51,8 @@ describe('fileManager tests', () => {
 
   describe('.listDeep(path)', () => {
     it('should list files and dirs inside a path', () =>
-      expect(fm.listDeep(STORAGE_ROOT)).to
-        .be.eventually.fulfilled.then((entries) => {
+      expect(fm.listDeep(STORAGE_ROOT)).to.be.eventually.fulfilled
+        .then((entries) => {
           const dirs = entries.dirs.map(entry =>
             entry.replace(STORAGE_ROOT, ''));
           expect(dirs).to.have.members(['/a', '/b', '/b/c', '/b/c/d']);
@@ -70,8 +70,8 @@ describe('fileManager tests', () => {
 
   describe('.info(path)', () => {
     it('should get info object of a file', () =>
-      expect(fm.info(`${STORAGE_ROOT}/t.txt`)).to
-        .be.eventually.fulfilled.then((stats) => {
+      expect(fm.info(`${STORAGE_ROOT}/t.txt`)).to.be.eventually.fulfilled
+        .then((stats) => {
           expect(stats.size).to.equal(19);
           expect(stats.type).to.equal('file');
           expect(stats.atime).to.be.instanceof(Date);
@@ -80,8 +80,8 @@ describe('fileManager tests', () => {
         }));
 
     it('should get info object of a directory', () =>
-      expect(fm.info(`${STORAGE_ROOT}`)).to
-        .be.eventually.fulfilled.then((stats) => {
+      expect(fm.info(`${STORAGE_ROOT}`)).to.be.eventually.fulfilled
+        .then((stats) => {
           expect(stats.size).to.equal(54);
           expect(stats.type).to.equal('directory');
           expect(stats.atime).to.be.instanceof(Date);
@@ -102,16 +102,16 @@ describe('fileManager tests', () => {
 
   describe('.createDir(path)', () => {
     it('should create a directory', () =>
-      expect(fm.createDir(NEW_DIR)).to
-        .be.eventually.fulfilled.then((path) => {
+      expect(fm.createDir(NEW_DIR)).to.be.eventually.fulfilled
+        .then((path) => {
           expect(path).to.equal(NEW_DIR);
           return expect(fm.exists(NEW_DIR)).to
             .eventually.be.fulfilled.and.to.equal(true);
         }));
 
     it('should create a directory tree recursively', () =>
-      expect(fm.createDir(NEW_DIR_TREE)).to
-        .be.eventually.fulfilled.then((path) => {
+      expect(fm.createDir(NEW_DIR_TREE)).to.be.eventually.fulfilled
+        .then((path) => {
           expect(path).to.equal(NEW_DIR_TREE);
           return expect(fm.exists(NEW_DIR_TREE)).to
             .eventually.be.fulfilled.and.to.equal(true);
@@ -120,16 +120,16 @@ describe('fileManager tests', () => {
 
   describe('.createFile(path)', () => {
     it('should create a file', () =>
-      expect(fm.createFile(NEW_FILE)).to
-        .be.eventually.fulfilled.then((path) => {
+      expect(fm.createFile(NEW_FILE)).to.be.eventually.fulfilled
+        .then((path) => {
           expect(path).to.equal(NEW_FILE);
           expect(fm.exists(NEW_FILE)).to
             .be.eventually.fulfilled.and.to.equal(true);
         }));
 
     it('should create a file inside a directory tree', () =>
-      expect(fm.createFile(NEW_DIR_TREE_FILE)).to
-        .be.eventually.fulfilled.then((path) => {
+      expect(fm.createFile(NEW_DIR_TREE_FILE)).to.be.eventually.fulfilled
+        .then((path) => {
           expect(path).to.equal(NEW_DIR_TREE_FILE);
           expect(fm.exists(NEW_DIR_TREE_FILE)).to
             .eventually.be.fulfilled.and.to.equal(true);
@@ -138,8 +138,8 @@ describe('fileManager tests', () => {
 
   describe('.removeFile(path)', () => {
     it('should remove an existing file', () =>
-      expect(fm.removeFile(NEW_FILE)).to
-        .be.eventually.fulfilled.then((path) => {
+      expect(fm.removeFile(NEW_FILE)).to.be.eventually.fulfilled
+        .then((path) => {
           expect(path).to.equal(NEW_FILE);
           expect(fm.exists(NEW_FILE)).to
             .eventually.be.fulfilled.and.to.equal(false);
@@ -148,24 +148,26 @@ describe('fileManager tests', () => {
 
   describe('.removeDir(path)', () => {
     it('should remove an existing directory', () =>
-      expect(fm.removeDir(NEW_DIR)).to
-        .be.eventually.fulfilled.then((path) => {
+      expect(fm.removeDir(NEW_DIR)).to.be.eventually.fulfilled
+        .then((path) => {
           expect(path).to.equal(NEW_DIR);
           return expect(fm.exists(NEW_DIR)).to
             .be.eventually.fulfilled.and.to.equal(false);
         }));
 
     it('should remove an existing directory tree recursively', () =>
-      expect(fm.removeDir(`${STORAGE_ROOT}/xxx`)).to
-        .be.eventually.fulfilled.then((path) => {
+      expect(fm.removeDir(`${STORAGE_ROOT}/xxx`)).to.be.eventually.fulfilled
+        .then((path) => {
           expect(path).to.equal(`${STORAGE_ROOT}/xxx`);
           return expect(fm.removeDir(`${STORAGE_ROOT}/fff`)).to
             .be.eventually.fulfilled;
-        }).then((path) => {
+        })
+        .then((path) => {
           expect(path).to.equal(`${STORAGE_ROOT}/fff`);
           return expect(fm.exists(`${STORAGE_ROOT}/xxx`)).to
             .be.eventually.fulfilled.and.to.equal(false);
-        }).then(() =>
+        })
+        .then(() =>
           expect(fm.exists(`${STORAGE_ROOT}/fff`)).to
             .be.eventually.fulfilled.and.to.equal(false)));
   });
@@ -175,9 +177,11 @@ describe('fileManager tests', () => {
       const newPath = `${STORAGE_ROOT}/r.txt`;
       const oldPath = `${STORAGE_ROOT}/t.txt`;
       return expect(fm.rename(oldPath, newPath)).to
-        .be.eventually.fulfilled.and.to.equal(newPath).then(() =>
+        .be.eventually.fulfilled.and.to.equal(newPath)
+        .then(() =>
           expect(fm.exists(oldPath)).to
-            .be.eventually.fulfilled.and.to.equal(false)).then(() =>
+            .be.eventually.fulfilled.and.to.equal(false))
+        .then(() =>
           expect(fm.exists(newPath)).to
             .be.eventually.fulfilled.and.to.equal(true))
         .then(() => {
@@ -190,11 +194,14 @@ describe('fileManager tests', () => {
       const newPath = `${STORAGE_ROOT}/r`;
       const oldPath = `${STORAGE_ROOT}/a`;
       return expect(fm.rename(oldPath, newPath)).to
-        .be.eventually.be.fulfilled.and.to.equal(newPath).then(() =>
+        .be.eventually.be.fulfilled.and.to.equal(newPath)
+        .then(() =>
           expect(fm.exists(oldPath)).to
-            .be.eventually.fulfilled.and.to.equal(false)).then(() =>
+            .be.eventually.fulfilled.and.to.equal(false))
+        .then(() =>
           expect(fm.exists(newPath)).to
-            .be.eventually.fulfilled.and.to.equal(true)).then(() =>
+            .be.eventually.fulfilled.and.to.equal(true))
+        .then(() =>
           expect(fm.rename(newPath, oldPath))
             .to.eventually.be.fulfilled.and.to.equal(oldPath));
     });
