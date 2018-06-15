@@ -21,7 +21,8 @@ const fileManager = require('file-manager-js');
 promisified fs.stat. retrieves the stats of a file or directory.
 https://nodejs.org/api/fs.html#fs_class_fs_stats
 ```javascript
-fileManager.stat('./test.txt').then((stats) => // stats)
+fileManager.stat('./test.txt')
+  .then((stats) => // stats)
   .catch((error) => // error);
 ```
 
@@ -41,15 +42,17 @@ fileManager.info('./test.txt').then((info) => {
 }).catch((error) => // error);
 
 // directory info
-fileManager.info('./test').then((info) => {
-  /*
-   {
-     size: 2146, // size of all files in dir tree
-     type: 'directory',
-     ...
-   }
-  */
-}).catch((error) => // error);
+fileManager.info('./test')
+  .then((info) => {
+    /*
+     {
+       size: 2146, // size of all files in dir tree
+       type: 'directory',
+       ...
+     }
+    */
+  })
+  .catch((error) => // error);
 ```
 
 **.join(path1, path2)**
@@ -64,38 +67,44 @@ let p = fileManager.join('a/b/c', 'd/e/f'); // a/b/c/d/e/f
 list first-level files and directories inside a directory 
 ```javascript
 // path can be an absolute path using __dirname
-fileManager.list('./project').then((entries) => {
-    /*
-     {
-         files: ['index.js', 'README.md'],
-         dirs : ['lib', 'node_modules', 'test']
-     }
-    */
-}).catch((error) => // error)
+fileManager.list('./project')
+  .then((entries) => {
+      /*
+       {
+           files: ['index.js', 'README.md'],
+           dirs : ['lib', 'node_modules', 'test']
+       }
+      */
+  })
+  .catch((error) => // error)
 ```
 
 **.listDeep(path)**
 
 list in-depth files and directories inside a directory
 ```javascript
-fileManager.listDeep('./content').then((entries) => {
-    /*
-     {
-         files: ['test.txt', 'abc/test.csv', 'new/content/test/a.txt'],
-         dirs : ['abc', 'abc/test', 'new/content/test']
-     }
-    */
-}).catch((error) => // error)
+fileManager.listDeep('./content')
+  .then((entries) => {
+      /*
+       {
+           files: ['test.txt', 'abc/test.csv', 'new/content/test/a.txt'],
+           dirs : ['abc', 'abc/test', 'new/content/test']
+       }
+      */
+  })
+  .catch((error) => // error)
 ```
 
 **.exists(path)**
 
 checks if a path (file or directory) exists and resolve with true or false
 ```javascript
-fileManager.exists('./content').then((exists) => // true)
+fileManager.exists('./content')
+  .then((exists) => // true)
   .catch((error) => // error)
 
-fileManager.exists('./newContent').then((exists) => // false)
+fileManager.exists('./newContent')
+  .then((exists) => // false)
   .catch((error) => // error)
 ```
 
@@ -104,8 +113,9 @@ fileManager.exists('./newContent').then((exists) => // false)
 creates a single directory or a directory tree
 ```javascript
 // create a directory tree
-fileManager.createDir('./a/b/c/d').then((path) => // path = ./a/b/c/d)
-.catch((error) => // error)
+fileManager.createDir('./a/b/c/d')
+  .then((path) => // path = ./a/b/c/d)
+  .catch((error) => // error)
 ```
 
 **.createFile(path)**
@@ -113,7 +123,8 @@ fileManager.createDir('./a/b/c/d').then((path) => // path = ./a/b/c/d)
 creates a file and creates the directory tree in the path if not exists
 ```javascript
 // creates a directory structure then the file
-fileManager.createFile('./x/y/z/test.txt').then((path) => // path = ./x/y/z/test.txt)
+fileManager.createFile('./x/y/z/test.txt')
+  .then((path) => // path = ./x/y/z/test.txt)
   .catch((error) => // error)
 ```
 
@@ -122,8 +133,9 @@ fileManager.createFile('./x/y/z/test.txt').then((path) => // path = ./x/y/z/test
 removes a directory or directory tree with all its content
 ```javascript
 // remvove a/b/c/d + a/b/c +  a/b/test.txt + a/b + a
-fileManager.removeDir('./a').then((path) => // ./a)
-.catch((error) => // error)
+fileManager.removeDir('./a')
+  .then((path) => // ./a)
+  .catch((error) => // error)
 ```
 
 **.removeFile(path)**
@@ -131,7 +143,8 @@ fileManager.removeDir('./a').then((path) => // ./a)
 removes a file
 ```javascript
 // removed ./test.txt
-fileManager.removeFile('./test.txt').then((path) => // ./test.txt)
+fileManager.removeFile('./test.txt')
+  .then((path) => // ./test.txt)
   .catch((error) => // error)
 ```
 
@@ -140,7 +153,8 @@ fileManager.removeFile('./test.txt').then((path) => // ./test.txt)
 rename a file or directory
 ```javascript
 // rename file ./test.txt to ./ttt.txt
-fileManager.rename('./test.txt', './ttt.txt').then((newPath) => // ./ttt.txt)
+fileManager.rename('./test.txt', './ttt.txt')
+  .then((newPath) => // ./ttt.txt)
   .catch((error) => // error)
 ```
 
