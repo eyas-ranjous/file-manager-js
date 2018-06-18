@@ -13,7 +13,11 @@ npm install file-manager-js
 ## Usage 
 
 ```javascript
+// require all functions
 const fileManager = require('file-manager-js');
+
+// OR specific functions
+const { list, removeFile, rename } = require('file-manager-js');
 ```
 
 **.stat(path)**
@@ -125,6 +129,15 @@ creates a file and creates the directory tree in the path if not exists
 // creates a directory structure then the file
 fileManager.createFile('./x/y/z/test.txt')
   .then((path) => // path = ./x/y/z/test.txt)
+  .catch((error) => // error)
+```
+
+**.readFile(path)**
+
+reads entire file content
+```javascript
+fileManager.readFile('./x/y/z/test.txt')
+  .then((content) => // content is instance of Buffer)
   .catch((error) => // error)
 ```
 
