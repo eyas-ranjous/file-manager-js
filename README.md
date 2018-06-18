@@ -13,7 +13,12 @@ npm install file-manager-js
 ## Usage 
 
 ```javascript
+// require all functions
 const fileManager = require('file-manager-js');
+
+// OR specific functions
+
+const { list, removeFile, rename } = require('file-manager-js');
 ```
 
 **.stat(path)**
