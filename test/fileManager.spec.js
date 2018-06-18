@@ -8,6 +8,7 @@ chai.use(chaiAsPromised);
 
 describe('fileManager tests', () => {
   const STORAGE_ROOT = `${__dirname}/fixtures/storage`;
+  const FILE = `${STORAGE_ROOT}/t.txt`;
   const NEW_DIR = `${STORAGE_ROOT}/new`;
   const NEW_FILE = `${NEW_DIR}/new.txt`;
   const NEW_DIR_TREE = `${STORAGE_ROOT}/xxx/yyy/zzz`;
@@ -20,7 +21,6 @@ describe('fileManager tests', () => {
           expect(stats.isDirectory()).to.equal(true);
           expect(stats.size).to.be.above(0);
         }));
-
 
     it('should get a file stats', () =>
       expect(fileManager.stat(`${STORAGE_ROOT}/t.txt`))
@@ -134,6 +134,12 @@ describe('fileManager tests', () => {
           expect(fileManager.exists(NEW_DIR_TREE_FILE)).to
             .eventually.be.fulfilled.and.to.equal(true);
         }));
+  });
+
+  describe('.readFile(path)', () => {
+    it('should read file content', () =>
+      expect(fileManager.readFile(FILE)).to.be.eventually
+        .fulfilled.and.to.be.instanceof(Buffer));
   });
 
   describe('.removeFile(path)', () => {
