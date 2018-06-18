@@ -15,6 +15,7 @@ const rename = require('./lib/rename');
 const createDir = require('./lib/createDir');
 const removeDir = require('./lib/removeDir');
 const createFile = require('./lib/createFile');
+const readFile = require('./lib/readFile');
 const removeFile = require('./lib/removeFile');
 
 // fileManager api
@@ -29,5 +30,6 @@ module.exports = {
   createDir: createDir(fs.mkdir, fs.stat),
   removeDir: removeDir(fs.rmdir, fs.unlink, fs.readdir, fs.stat, join),
   createFile: createFile(fs.open, fs.mkdir, fs.stat),
+  readFile: readFile(fs.readFile),
   removeFile: removeFile(fs.unlink)
 };
