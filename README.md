@@ -171,23 +171,7 @@ fileManager.rename('./test.txt', './ttt.txt')
   .catch((error) => // error)
 ```
 
-## Lint
-```
-grunt lint
-```
-
-## Test
-```
-grunt test
-```
-
-## Coverage
-```
-grunt coverage
-```
-
 ## Build
-All tasks
 ```
 grunt build
 ```
