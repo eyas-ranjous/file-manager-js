@@ -172,7 +172,6 @@ fileManager.rename('./test.txt', './ttt.txt')
 ```
 
 ## Build
-All tasks
 ```
 grunt build
 ```
