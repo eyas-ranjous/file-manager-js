@@ -73,12 +73,12 @@ list first-level files and directories inside a directory
 // path can be an absolute path using __dirname
 fileManager.list('./project')
   .then((entries) => {
-      /*
-       {
-           files: ['index.js', 'README.md'],
-           dirs : ['lib', 'node_modules', 'test']
-       }
-      */
+    /*
+     {
+       files: ['index.js', 'README.md'],
+       dirs : ['lib', 'node_modules', 'test']
+     }
+    */
   })
   .catch((error) => // error)
 ```
@@ -89,12 +89,12 @@ list in-depth files and directories inside a directory
 ```javascript
 fileManager.listDeep('./content')
   .then((entries) => {
-      /*
-       {
-           files: ['test.txt', 'abc/test.csv', 'new/content/test/a.txt'],
-           dirs : ['abc', 'abc/test', 'new/content/test']
-       }
-      */
+    /*
+     {
+       files: ['test.txt', 'abc/test.csv', 'new/content/test/a.txt'],
+       dirs : ['abc', 'abc/test', 'new/content/test']
+     }
+    */
   })
   .catch((error) => // error)
 ```
